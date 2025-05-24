@@ -1,22 +1,23 @@
 import React from "react";
 import { Header, Page } from "zmp-ui";
 import ArrowLeftIcon from "../static/arrow-left-blue.png";
-import { OrderPageOrderForm } from "../components/OrderPage";
+import { Footer } from "../components/common/footer";
+import { UserPageOptionMenu } from "../components/UserPage";
 
-const OrderPage = () => {
+const UserPage = () => {
   return (
-    <Page className="relative flex flex-1 flex-col bg-white">
+    <Page className="relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (
             <div className="relative">
               <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
-                Đặt đơn
+                Cá nhân
               </div>
             </div>
           ) as unknown as string
         }
-        className="topbar no-border h-auto flex-none border-b-[4px] border-stroke1 pl-4"
+        className="topbar h-auto flex-none !bg-surface pl-4"
         backIcon={
           <div className="absolute inset-1/2 flex size-[40px] -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full bg-surface">
             <img src={ArrowLeftIcon} />
@@ -24,10 +25,13 @@ const OrderPage = () => {
         }
       />
       <div className="flex-1 overflow-auto">
-        <OrderPageOrderForm />
+        <div className="bg-white">
+          <UserPageOptionMenu />
+        </div>
       </div>
+      <Footer />
     </Page>
   );
 };
 
-export default OrderPage;
+export default UserPage;

@@ -2,12 +2,12 @@ import { DatePicker, Divider } from "antd";
 import React, { FC } from "react";
 import ArrowRightIcon from "../../static/chevron-right-blue.png";
 import CalendarEditIcon from "../../static/calendar-edit.png";
-import ClockIcon from "../../static/clock-blue.png";
+import ClockIcon from "../../static/clock.png";
 import dayjs from "dayjs";
 
 const TimePicker: FC<Props> = (props) => {
   return (
-    <div className="flex flex-col gap-[8px] px-[16px] pt-[20px]">
+    <div className="flex flex-col gap-[8px] px-[16px]">
       <div className="text-[15px] font-medium">Đặt lịch hẹn</div>
       <DatePicker
         showTime

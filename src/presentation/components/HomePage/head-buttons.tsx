@@ -1,6 +1,6 @@
 import React from "react";
 import StarIcon from "../../static/ic_round-star.png";
-import ArrowRightIcon from "../../static/arrow-right.png";
+import ChevronRightIcon from "../../static/chevron-right.png";
 import MessageIcon from "../../static/messages-3.png";
 
 const HeadButtons = () => {
@@ -26,7 +26,7 @@ const HeadButtons = () => {
           </div>
         </div>
         {/* <div className="size-[20px]">
-          <img src={ArrowRightIcon} alt="" className="size-full object-cover" />
+          <img src={ChevronRightIcon} alt="" className="size-full object-cover" />
         </div> */}
       </div>
       {/* Chat */}

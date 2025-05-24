@@ -12,6 +12,9 @@
 
 // Select
 .customSelect {
+  .ant-select-selector {
+    border: none !important;
+  }
   .ant-select-item-option:not(:last-child) {
     border-bottom: 1px solid #f4f6f4;
   }
@@ -40,6 +43,19 @@
   }
   .ant-radio-label {
     flex: 1 1 0%;
+  }
+
+  .ant-radio-checked {
+    .ant-radio-inner {
+      background-color: white;
+      border-color: #dbdfe3;
+    }
+    .ant-radio-inner:after {
+      background-color: #8ee2ff;
+      width: 10px;
+      height: 10px;
+      transform: translate(3px, 3px);
+    }
   }
 }
 

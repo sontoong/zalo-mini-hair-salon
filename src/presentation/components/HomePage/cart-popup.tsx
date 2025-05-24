@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react";
 import { createPortal } from "react-dom";
-import { Sheet } from "zmp-ui";
+import { Modal, Picker, Sheet } from "zmp-ui";
 import CloseIcon from "../../static/close-icon.png";
 import BagIcon from "../../static/bag-icon.png";
 import { Form } from "../common/form";
 import { Button } from "../common/button";
 import { formatCurrency } from "../../utils/helpers";
-import { Divider } from "antd";
+import { Divider, Input } from "antd";
 import MinusIcon from "../../static/minus-icon.png";
 import AddIcon from "../../static/add-icon.png";
 
@@ -19,8 +19,8 @@ const CartPopup: FC<Props> = ({ children }) => {
   };
 
   const initialValues = {
-    quantity: 0,
-    notes: "",
+    totalQuantity: 0,
+    products: data,
   };
 
   return (
@@ -30,18 +30,28 @@ const CartPopup: FC<Props> = ({ children }) => {
         <Sheet
           title={
             (
-              <div className="absolute inset-x-[16px] flex items-center">
-                <div>Giỏ hàng</div>
-                <div
-                  className="absolute right-0 ml-auto size-[12px]"
-                  onClick={() => setVisible(false)}
-                >
-                  <img
-                    src={CloseIcon}
-                    alt=""
-                    className="size-full object-cover"
-                  />
+              <div className="absolute inset-x-[16px]">
+                <div className="flex items-center gap-[12px]">
+                  <div>Giỏ hàng</div>
+                  <div
+                    className="absolute right-0 ml-auto flex items-center gap-[8px]"
+                    onClick={() => setVisible(false)}
+                  >
+                    <Button
+                      text={
+                        <div className="text-sm text-red5">Xoá giỏ hàng</div>
+                      }
+                    />
+                    <div className="size-[12px]">
+                      <img
+                        src={CloseIcon}
+                        alt=""
+                        className="size-full object-cover"
+                      />
+                    </div>
+                  </div>
                 </div>
+                <Divider className="m-0 mt-[12px]" />
               </div>
             ) as unknown as string
           }
@@ -53,7 +63,7 @@ const CartPopup: FC<Props> = ({ children }) => {
           mask
           handler={false}
           unmountOnClose
-          height={"50vh"}
+          height={"60vh"}
           style={{
             background: "#FFF",
             borderRadius: "8px 8px 0 0",
@@ -64,10 +74,108 @@ const CartPopup: FC<Props> = ({ children }) => {
             onFinish={onFinish}
             autoComplete="off"
             initialValues={initialValues}
-            className="flex-1 overflow-auto"
+            className="flex-1 overflow-auto pt-[22px]"
           >
-            <Form.Item name="quantity" hidden />
-            <div className="px-[16px]">abc</div>
+            <Form.Item name="totalQuantity" noStyle />
+            <Form.List name="products">
+              {(fields, { remove }) => (
+                <div className="flex flex-col gap-[12px] overflow-auto px-[16px] pb-[150px]">
+                  {/* Cart Item */}
+                  {fields.map((field, index) => {
+                    const itemIndex = field.name;
+                    const item = form.getFieldValue("products")[itemIndex];
+
+                    return (
+                      <React.Fragment key={index}>
+                        <div className="flex flex-col gap-[5px]">
+                          <div className="flex flex-col gap-[3px]">
+                            <div className="text-lg font-normal text-gray9">
+                              {item.title}
+                            </div>
+                            <div className="text-[15px] font-normal text-gray8">
+                              {item.product}
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="text-lg font-normal">
+                              {formatCurrency(item.price)}
+                            </div>
+                            <Form.Item
+                              noStyle
+                              shouldUpdate={(prevValues, curValues) =>
+                                prevValues.products !== curValues.products
+                              }
+                            >
+                              {() => {
+                                const item =
+                                  form.getFieldValue("products")[itemIndex];
+                                return (
+                                  <RemoveItemModal
+                                    onAccept={() => remove(itemIndex)}
+                                    item={item}
+                                  >
+                                    {({ open }) => (
+                                      <div className="flex items-center gap-[16px]">
+                                        <Button.Icon
+                                          icon={<img src={MinusIcon} />}
+                                          className="size-[24px] bg-primary1"
+                                          onClick={() => {
+                                            const currQuantity = item.quantity;
+                                            const nextQuantity = Math.max(
+                                              currQuantity - 1,
+                                              0,
+                                            );
+                                            if (nextQuantity === 0) {
+                                              open();
+                                            } else {
+                                              form.setFieldValue(
+                                                [
+                                                  "products",
+                                                  itemIndex,
+                                                  "quantity",
+                                                ],
+                                                nextQuantity,
+                                              );
+                                            }
+                                          }}
+                                        />
+                                        <div className="text-[20px] font-medium">
+                                          {item.quantity}
+                                        </div>
+                                        <Button.Icon
+                                          icon={<img src={AddIcon} />}
+                                          className="size-[24px] bg-primary4"
+                                          onClick={() => {
+                                            const currQuantity = item.quantity;
+                                            const nextQuantity =
+                                              currQuantity + 1;
+                                            form.setFieldValue(
+                                              [
+                                                "products",
+                                                itemIndex,
+                                                "quantity",
+                                              ],
+                                              nextQuantity,
+                                            );
+                                          }}
+                                        />
+                                      </div>
+                                    )}
+                                  </RemoveItemModal>
+                                );
+                              }}
+                            </Form.Item>
+                          </div>
+                        </div>
+                        {index < fields.length - 1 ? (
+                          <Divider className="m-0" />
+                        ) : null}
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              )}
+            </Form.List>
             {/* Footer */}
             <div
               className="fixed inset-x-0 bottom-0 flex flex-col bg-white"
@@ -81,7 +189,7 @@ const CartPopup: FC<Props> = ({ children }) => {
                 <Form.Item
                   noStyle
                   shouldUpdate={(prevValues, curValues) =>
-                    prevValues.quantity !== curValues.quantity
+                    prevValues.totalQuantity !== curValues.totalQuantity
                   }
                 >
                   {() => (
@@ -90,20 +198,22 @@ const CartPopup: FC<Props> = ({ children }) => {
                         icon={<img src={MinusIcon} />}
                         className="size-[24px] bg-primary1"
                         onClick={() => {
-                          const currQuantity = form.getFieldValue("quantity");
+                          const currQuantity =
+                            form.getFieldValue("totalQuantity");
                           const nextQuantity = Math.max(currQuantity - 1, 0);
-                          form.setFieldValue("quantity", nextQuantity);
+                          form.setFieldValue("totalQuantity", nextQuantity);
                         }}
                       />
                       <div className="text-[20px] font-medium">
-                        {form.getFieldValue("quantity")}
+                        {form.getFieldValue("totalQuantity")}
                       </div>
                       <Button.Icon
                         icon={<img src={AddIcon} />}
                         className="size-[24px] bg-primary4"
                         onClick={() => {
-                          const currQuantity = form.getFieldValue("quantity");
-                          form.setFieldValue("quantity", currQuantity + 1);
+                          const currQuantity =
+                            form.getFieldValue("totalQuantity");
+                          form.setFieldValue("totalQuantity", currQuantity + 1);
                         }}
                       />
                     </div>
@@ -118,20 +228,26 @@ const CartPopup: FC<Props> = ({ children }) => {
               <div className="flex gap-[12px] px-[16px] pb-[20px] pt-[12px]">
                 <Button
                   text={
-                    <div className="text-[15px] font-medium text-primary5">
-                      Bỏ qua
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-[12px]">
+                        <div className="size-[20px]">
+                          <img
+                            src={BagIcon}
+                            alt=""
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div className="text-[15px] font-medium text-white">
+                          2 dịch vụ
+                        </div>
+                      </div>
+                      <div className="text-[15px] font-medium text-white">
+                        {formatCurrency(240000)}
+                      </div>
                     </div>
                   }
-                  className="h-[37px] rounded-[40px] border-[1.5px] border-primary5"
-                  onClick={() => setVisible(false)}
-                />
-                <Button
-                  text={
-                    <div className="text-sm font-normal text-white">
-                      Xác nhận
-                    </div>
-                  }
-                  className="h-[37px] rounded-[40px] bg-primary5"
+                  prefix=""
+                  className="h-[37px] rounded-[40px] bg-primary5 px-[24px] py-[8px]"
                   onClick={form.submit}
                 />
               </div>
@@ -144,7 +260,7 @@ const CartPopup: FC<Props> = ({ children }) => {
   );
 };
 
-const CartButton = () => {
+const CartOpenButton = () => {
   return (
     <CartPopup>
       {({ open }) => (
@@ -154,8 +270,8 @@ const CartButton = () => {
           style={{ boxShadow: "0px 4px 18px 0px #5655552B" }}
         >
           <div className="flex items-center gap-[12px]">
-            <div className="bg-infor1 flex size-[32px] items-center justify-center rounded-full">
-              <div className="text-infor4 text-base font-semibold">2</div>
+            <div className="flex size-[32px] items-center justify-center rounded-full bg-infor1">
+              <div className="text-base font-semibold text-infor4">2</div>
             </div>
             <div className="text-[15px] font-medium">dịch vụ</div>
           </div>
@@ -173,8 +289,86 @@ const CartButton = () => {
   );
 };
 
-export default CartButton;
+const RemoveItemModal: FC<Props & { onAccept: () => void; item: any }> = ({
+  children,
+  onAccept,
+  item,
+}) => {
+  const [visible, setVisible] = useState<boolean>(false);
+
+  function handleCancel() {
+    setVisible(false);
+  }
+
+  function handleAccept() {
+    onAccept();
+    setVisible(false);
+  }
+
+  return (
+    <>
+      {children({ open: () => setVisible(true) })}
+      {createPortal(
+        <Modal
+          visible={visible}
+          title={
+            (
+              <div className="text-center text-lg font-medium">
+                Bạn chắc chắn xoá khỏi giỏ hàng?
+              </div>
+            ) as unknown as string
+          }
+          onClose={() => {
+            setVisible(false);
+          }}
+          verticalActions
+          zIndex={9999}
+          maskClassName="!z-[9999]"
+        >
+          <div className="flex flex-col gap-[12px]">
+            <div className="text-center">
+              <span className="text-sm font-normal text-gray8">
+                1x Dịch vụ{" "}
+              </span>
+              <span className="text-sm font-normal">{item.title}</span>
+            </div>
+            <div className="flex gap-[10px]">
+              <Button
+                text={<div className="text-sm font-medium text-gray7">Hủy</div>}
+                className="rounded-[4px] px-3 py-[10px]"
+                onClick={handleCancel}
+              />
+              <Button
+                text={<div className="text-sm font-medium text-red5">Xóa</div>}
+                className="rounded-[4px] px-3 py-[10px]"
+                onClick={handleAccept}
+              />
+            </div>
+          </div>
+        </Modal>,
+        document.body,
+      )}
+    </>
+  );
+};
+
+export default CartOpenButton;
 
 type Props = {
   children: (methods: { open: () => void }) => React.ReactNode;
 };
+
+const data = [
+  {
+    title: "Nhuộm tóc",
+    product: "Dầu gội Pantin, Loại 1",
+    price: 50000,
+    quantity: 2,
+  },
+  {
+    title: "Uốn tóc",
+    product: "Dầu gội Pantin, Loại 1",
+    price: 50000,
+    quantity: 1,
+  },
+];

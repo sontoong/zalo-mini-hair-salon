@@ -11,7 +11,7 @@ const Select: FC<Props> = ({ fontSize = 14, optionFontSize = 14, ...rest }) => {
       }}
     >
       <OriginalSelect
-        suffixIcon={<img src={ChevronDown} className="size-[18px]" />}
+        suffixIcon={<img src={ChevronDown} className="size-[14px]" />}
         {...rest}
       />
     </ConfigProvider>
@@ -20,4 +20,7 @@ const Select: FC<Props> = ({ fontSize = 14, optionFontSize = 14, ...rest }) => {
 
 export { Select };
 
-type Props = { fontSize?: number; optionFontSize?: number } & SelectProps;
+type Props = {
+  fontSize?: number;
+  optionFontSize?: number;
+} & SelectProps;

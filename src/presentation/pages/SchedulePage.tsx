@@ -1,9 +1,12 @@
 import React from "react";
 import { Header, Page } from "zmp-ui";
 import ArrowLeftIcon from "../static/arrow-left-blue.png";
-import { OrderPageOrderForm } from "../components/OrderPage";
+import {
+  SchedulePageScheduleForm,
+  SchedulePageSuccessModal,
+} from "../components/SchedulePage";
 
-const OrderPage = () => {
+const SchedulePage = () => {
   return (
     <Page className="relative flex flex-1 flex-col bg-white">
       <Header
@@ -11,12 +14,12 @@ const OrderPage = () => {
           (
             <div className="relative">
               <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
-                Đặt đơn
+                Đặt lịch
               </div>
             </div>
           ) as unknown as string
         }
-        className="topbar no-border h-auto flex-none border-b-[4px] border-stroke1 pl-4"
+        className="topbar no-border h-auto flex-none pl-4"
         backIcon={
           <div className="absolute inset-1/2 flex size-[40px] -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full bg-surface">
             <img src={ArrowLeftIcon} />
@@ -24,10 +27,14 @@ const OrderPage = () => {
         }
       />
       <div className="flex-1 overflow-auto">
-        <OrderPageOrderForm />
+        <div className="flex flex-col gap-[24px] px-[16px] pb-[16px]">
+          <SchedulePageSuccessModal>
+            {({ open }) => <SchedulePageScheduleForm openSuccessModal={open} />}
+          </SchedulePageSuccessModal>
+        </div>
       </div>
     </Page>
   );
 };
 
-export default OrderPage;
+export default SchedulePage;

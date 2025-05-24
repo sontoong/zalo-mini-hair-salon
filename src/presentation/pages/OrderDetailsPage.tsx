@@ -1,9 +1,14 @@
 import React from "react";
 import { Header, Page } from "zmp-ui";
 import ArrowLeftIcon from "../static/arrow-left-blue.png";
-import { OrderPageOrderForm } from "../components/OrderPage";
+import { useLocation } from "react-router-dom";
+import { OrderDetailsPageOrderForm } from "../components/OrderDetailsPage";
+import { orderTypes } from "../constants/orderTypes";
 
-const OrderPage = () => {
+const OrderDetailsPage = () => {
+  const { state } = useLocation();
+  const order = state;
+
   return (
     <Page className="relative flex flex-1 flex-col bg-white">
       <Header
@@ -11,12 +16,14 @@ const OrderPage = () => {
           (
             <div className="relative">
               <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
-                Đặt đơn
+                {order.type.label === orderTypes["Đơn nháp"].label
+                  ? order.type.label
+                  : `Đơn hàng #${order.id}`}
               </div>
             </div>
           ) as unknown as string
         }
-        className="topbar no-border h-auto flex-none border-b-[4px] border-stroke1 pl-4"
+        className="topbar no-border h-auto flex-none pl-4"
         backIcon={
           <div className="absolute inset-1/2 flex size-[40px] -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full bg-surface">
             <img src={ArrowLeftIcon} />
@@ -24,10 +31,10 @@ const OrderPage = () => {
         }
       />
       <div className="flex-1 overflow-auto">
-        <OrderPageOrderForm />
+        <OrderDetailsPageOrderForm type={order.type.label} />
       </div>
     </Page>
   );
 };
 
-export default OrderPage;
+export default OrderDetailsPage;

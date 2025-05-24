@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import CheckMarkImg from "../../static/order-success-checkmark.png";
+import CheckMarkImg from "../../static/success-checkmark.png";
 import CrossImg from "../../static/order-fail-cross.png";
 import MessageIcon from "../../static/messages-3.png";
 import { Button } from "../common/button";
@@ -50,7 +50,7 @@ const Head: FC<Props> = (props) => {
       </div>
       {/* Text */}
       <div className="flex flex-col gap-[12px]">
-        <div className="text-red5 text-center text-xl font-medium">
+        <div className="text-center text-xl font-medium text-red5">
           Đơn đã bị hủy
         </div>
         <div className="text-center text-xs font-normal text-error3">

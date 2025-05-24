@@ -12,6 +12,7 @@ const Promotion = () => {
         className="h-full"
         pagination={true}
         modules={[Pagination]}
+        loop={true}
       >
         {Array.from({ length: 4 }).map((_, index) => (
           <SwiperSlide key={index} className="!flex items-center">

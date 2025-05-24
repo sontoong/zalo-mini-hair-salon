@@ -17,6 +17,10 @@ import HomePage from "./presentation/pages/HomePage";
 import OrderPage from "./presentation/pages/OrderPage";
 import OrderSuccessPage from "./presentation/pages/OrderSuccessPage";
 import OrderCancelPage from "./presentation/pages/OrderCancelPage";
+import SchedulePage from "./presentation/pages/SchedulePage";
+import UserPage from "./presentation/pages/UserPage";
+import OrderListPage from "./presentation/pages/OrderListPage";
+import OrderDetailsPage from "./presentation/pages/OrderDetailsPage";
 
 import "dayjs/locale/vi";
 import timezone from "dayjs/plugin/timezone";
@@ -62,6 +66,22 @@ const router = createBrowserRouter(
           path: "/order-cancel",
           element: <OrderCancelPage />,
         },
+        {
+          path: "/schedule",
+          element: <SchedulePage />,
+        },
+        {
+          path: "/profile",
+          element: <UserPage />,
+        },
+        {
+          path: "/orders",
+          element: <OrderListPage />,
+        },
+        {
+          path: "/orders/:orderId",
+          element: <OrderDetailsPage />,
+        },
       ],
     },
   ],
@@ -75,7 +95,7 @@ const MyApp = () => {
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: "#8EE2FF",
+              colorPrimary: "#92dff3",
               fontFamily:
                 "'Inter',-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
             },

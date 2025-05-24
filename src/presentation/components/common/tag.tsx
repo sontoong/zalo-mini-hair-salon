@@ -31,7 +31,7 @@ const CheckableTag: FC<CTagProps> = ({
         <div className="relative">
           <OriginTag
             color="blue"
-            className={className}
+            className={`m-0 ${className}`}
             onClick={() => onCheckChange?.(false)}
             {...rest}
           />
@@ -46,7 +46,7 @@ const CheckableTag: FC<CTagProps> = ({
       ) : (
         <OriginTag
           color="white"
-          className={`border !border-stroke1 !text-gray8 ${className}`}
+          className={`m-0 border !border-stroke1 !text-gray8 ${className}`}
           onClick={() => onCheckChange?.(true)}
           {...rest}
         />

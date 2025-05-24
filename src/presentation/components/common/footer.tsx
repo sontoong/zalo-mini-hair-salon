@@ -1,34 +1,64 @@
 import React from "react";
 import TransitionLink from "./transition-link";
 import HomeIcon from "../../static/home-icon.png";
+import HomeOutlineIcon from "../../static/home-outline-icon.png";
 import CalendarIcon from "../../static/calendar-icon.png";
-import LocationIcon from "../../static/location-icon.png";
+import ShoppingBagIcon from "../../static/shopping-bag-icon.png";
+import ShoppingBagOutlineIcon from "../../static/shopping-bag-outline-icon.png";
 import UserIcon from "../../static/user-icon.png";
+import UserOutlineIcon from "../../static/user-outline-icon.png";
+import ChatBubbleIcon from "../../static/chat-bubble-icon.png";
 
 const NAV_ITEMS = [
   {
     name: "Trang chủ",
     path: "/",
     icon: ({ active }: { active: boolean }) =>
-      active ? <img src={HomeIcon} /> : <img src={HomeIcon} />,
+      active ? (
+        <img src={HomeIcon} className="size-[20px]" />
+      ) : (
+        <img src={HomeOutlineIcon} className="size-[20px]" />
+      ),
+  },
+  {
+    name: "Đơn hàng",
+    path: "/orders",
+    icon: ({ active }: { active: boolean }) =>
+      active ? (
+        <img src={ShoppingBagIcon} className="size-[20px]" />
+      ) : (
+        <img src={ShoppingBagOutlineIcon} className="size-[20px]" />
+      ),
   },
   {
     name: "Đặt lịch",
-    path: "/",
+    path: "/schedule",
     icon: ({ active }: { active: boolean }) =>
-      active ? <img src={CalendarIcon} /> : <img src={CalendarIcon} />,
+      active ? (
+        <img src={CalendarIcon} className="size-[20px]" />
+      ) : (
+        <img src={CalendarIcon} className="size-[20px]" />
+      ),
   },
   {
-    name: "Địa điểm",
+    name: "Chat",
     path: "/",
     icon: ({ active }: { active: boolean }) =>
-      active ? <img src={LocationIcon} /> : <img src={LocationIcon} />,
+      active ? (
+        <img src={ChatBubbleIcon} className="size-[20px]" />
+      ) : (
+        <img src={ChatBubbleIcon} className="size-[20px]" />
+      ),
   },
   {
     name: "Cá nhân",
-    path: "/",
+    path: "/profile",
     icon: ({ active }: { active: boolean }) =>
-      active ? <img src={UserIcon} /> : <img src={UserIcon} />,
+      active ? (
+        <img src={UserIcon} className="size-[20px]" />
+      ) : (
+        <img src={UserOutlineIcon} className="size-[20px]" />
+      ),
   },
 ];
 

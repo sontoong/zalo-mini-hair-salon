@@ -30,11 +30,11 @@ const ServiceItem: FC<ServiceItemProps> = ({ service, onClick }) => {
       </div>
       <div className="flex flex-col gap-[6px]">
         <div className="text-[20px] font-medium">{service.name}</div>
-        <div className="flex gap-[8px]">
-          <div className="text-[18px] font-normal">
+        <div className="flex items-center gap-[8px]">
+          <div className="text-lg font-normal">
             {formatCurrency(service.priceSale)}
           </div>
-          <div className="text-[16px] font-normal text-gray7 line-through">
+          <div className="text-base font-normal text-gray7 line-through">
             {formatCurrency(service.price)}
           </div>
         </div>

@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from "react";
-import SearchIcon from "../../static/search-normal.png";
+import SearchIcon from "../../static/search-icon.png";
 
 export interface SearchBarRef {
   dropdownHeight: number | null;
@@ -268,7 +268,7 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
         >
           <Input
             placeholder={placeholder}
-            prefix={<img src={SearchIcon} />}
+            prefix={<img src={SearchIcon} className="size-[16px]" />}
             className={`z-10 text-sm font-normal !ring-0 ${className}`}
           />
         </AutoComplete>

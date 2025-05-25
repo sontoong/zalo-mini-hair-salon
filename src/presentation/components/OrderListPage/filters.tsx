@@ -13,7 +13,7 @@ const Filters = () => {
           checked={currentChecked === index}
           onClick={() => setCurrentChecked(index)}
         >
-          <div className="text-sx font-normal">{type.label}</div>
+          <div className="text-xs font-normal">{type.label}</div>
         </CheckableTag>
       ))}
     </div>

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const OrderList = () => {
   return (
     <div className="flex flex-col gap-[14px]">
-      {data.map((order, index) => (
+      {orders.map((order, index) => (
         <OrderListItem key={index} order={order} />
       ))}
     </div>
@@ -74,7 +74,7 @@ const OrderListItem = ({ order }) => {
 
 export default OrderList;
 
-const data = [
+export const orders = [
   {
     id: "123434",
     type: orderTypes["Đơn nháp"],

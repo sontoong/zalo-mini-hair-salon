@@ -19,7 +19,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
       <>
         <div className="flex items-center justify-between px-[16px]">
           <div className="flex flex-col gap-[12px]">
-            <div className="text-infor3 text-lg font-medium">
+            <div className="text-lg font-medium text-infor3">
               Đang chờ thực hiện
             </div>
             <div className="flex items-center gap-[4px]">
@@ -49,7 +49,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
       <>
         <div className="flex items-center justify-between px-[16px]">
           <div className="flex flex-col gap-[12px]">
-            <div className="text-alert4 text-lg font-medium">
+            <div className="text-lg font-medium text-alert4">
               Đang chờ xác nhận
             </div>
             <div className="flex items-center gap-[4px]">
@@ -107,7 +107,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             />
           </div>
         </div>
-        <Rate className="px-[16px] text-[16px]" />
+        <Rate className="px-[16px] text-[16px]" disabled />
         <div className="flex flex-col gap-[12px] px-[16px]">
           <div className="flex gap-[8px]">
             <div className="h-[18px] rounded-[12px] border border-stroke3 px-[8px] text-xs font-normal text-gray8">
@@ -118,7 +118,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-end gap-[12px] px-[16px]">
+        <div className="flex items-end px-[16px]">
           <div className="flex gap-[4px]">
             <div className="size-[20px] shrink-0">
               <img src={NoteText} alt="" className="size-full object-cover" />
@@ -187,5 +187,5 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
     );
   }
 
-  return <div>Progress</div>;
+  return null;
 };

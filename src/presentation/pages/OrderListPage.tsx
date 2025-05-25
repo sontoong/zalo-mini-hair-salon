@@ -7,20 +7,24 @@ import {
   OrderListPageOrderList,
 } from "../components/OrderListPage";
 import { Button } from "../components/common/button";
+import { useNavigate } from "react-router-dom";
 
 const OrderListPage = () => {
+  const navigate = useNavigate();
+
   return (
     <Page className="relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (
-            <div className="flex justify-between pl-[33%]">
+            <div className="flex justify-between pl-[31%]">
               <div className="text-lg font-medium">Đơn hàng</div>
               <Button
                 text={
                   <div className="text-sm font-medium text-blue5">Lịch sử</div>
                 }
-                className="bg-blue1 h-[29px] flex-none rounded-[24px] px-[10px]"
+                className="h-[29px] flex-none rounded-[24px] bg-blue1 px-[10px]"
+                onClick={() => navigate("/order-history")}
               />
             </div>
           ) as unknown as string

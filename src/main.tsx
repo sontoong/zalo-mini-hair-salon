@@ -21,6 +21,8 @@ import SchedulePage from "./presentation/pages/SchedulePage";
 import UserPage from "./presentation/pages/UserPage";
 import OrderListPage from "./presentation/pages/OrderListPage";
 import OrderDetailsPage from "./presentation/pages/OrderDetailsPage";
+import RatingPage from "./presentation/pages/RatingPage";
+import OrderHistoryPage from "./presentation/pages/OrderHistoryPage";
 
 import "dayjs/locale/vi";
 import timezone from "dayjs/plugin/timezone";
@@ -81,6 +83,14 @@ const router = createBrowserRouter(
         {
           path: "/orders/:orderId",
           element: <OrderDetailsPage />,
+        },
+        {
+          path: "/rate",
+          element: <RatingPage />,
+        },
+        {
+          path: "/order-history",
+          element: <OrderHistoryPage />,
         },
       ],
     },

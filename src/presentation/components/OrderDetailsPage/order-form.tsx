@@ -10,12 +10,36 @@ import dayjs from "dayjs";
 import { Progress } from "./progress";
 import { orderTypes } from "../../constants/orderTypes";
 
-const OrderForm: FC<Props> = ({ type }) => {
+const OrderForm: FC<Props> = ({ order }) => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
 
+  const type = order.type.label as keyof typeof orderTypes;
+
   function onFormFinish() {
-    navigate("/order-success");
+    switch (type) {
+      case "Đơn nháp":
+        break;
+
+      case "Chờ thực hiện":
+        navigate("/rate", { state: order });
+        break;
+
+      case "Chờ xác nhận":
+        navigate("/rate", { state: order });
+        break;
+
+      case "Đã hoàn thành":
+        navigate("/rate", { state: order });
+        break;
+
+      case "Đã hủy":
+        navigate("/order");
+        break;
+
+      default:
+        break;
+    }
   }
 
   const initialValues = {
@@ -36,7 +60,7 @@ const OrderForm: FC<Props> = ({ type }) => {
         <Summary />
         <Divider className="m-0 border-[2px] border-stroke1" />
         <PaymentMethod />
-        <Footer type={type} onDraft={() => {}} onPlaceOrder={form.submit} />
+        <Footer type={type} onSubmit={form.submit} />
       </div>
     </Form>
   );
@@ -45,5 +69,5 @@ const OrderForm: FC<Props> = ({ type }) => {
 export default OrderForm;
 
 type Props = {
-  type: keyof typeof orderTypes;
+  order: any;
 };

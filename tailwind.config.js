@@ -57,6 +57,7 @@ module.exports = {
         error3: "#E55C5C",
         success1: "#EDFCF1",
         success4: "#1C9946",
+        neutral5: "#9D9D9D",
         neutral6: "#747373",
         neutral7: "#525252",
         accent6: "#1C9B47",

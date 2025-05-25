@@ -4,7 +4,7 @@ import { Divider } from "antd";
 import { Button } from "../common/button";
 import { orderTypes } from "../../constants/orderTypes";
 
-export const Footer: FC<Props> = ({ onPlaceOrder, type }) => {
+export const Footer: FC<Props> = ({ onSubmit, type }) => {
   return (
     <div
       className="fixed inset-x-0 bottom-0 flex flex-col bg-white"
@@ -23,7 +23,7 @@ export const Footer: FC<Props> = ({ onPlaceOrder, type }) => {
       <Divider className="m-0" />
       {/* Buttons */}
       <div className="flex px-[16px] pb-[20px] pt-[12px]">
-        <FooterButton type={type} onPlaceOrder={onPlaceOrder} />
+        <FooterButton type={type} onSubmit={onSubmit} />
       </div>
     </div>
   );
@@ -31,15 +31,14 @@ export const Footer: FC<Props> = ({ onPlaceOrder, type }) => {
 
 const FooterButton: FC<{
   type: keyof typeof orderTypes;
-  onPlaceOrder?: () => void;
-}> = ({ type, onPlaceOrder }) => {
-  console.log(type);
+  onSubmit?: () => void;
+}> = ({ type, onSubmit }) => {
   if (type === "Đơn nháp") {
     return (
       <Button
-        text={<div className="text-sm font-normal text-white">Đơn nháp</div>}
+        text={<div className="text-sm font-normal text-white">Đặt đơn</div>}
         className="h-[37px] rounded-[40px] bg-primary5"
-        onClick={onPlaceOrder}
+        onClick={onSubmit}
       />
     );
   }
@@ -49,7 +48,7 @@ const FooterButton: FC<{
       <Button
         text={<div className="text-sm font-medium text-primary6">Đặt lại</div>}
         className="h-[37px] rounded-[40px] border-[1.5px] border-primary5 bg-white"
-        onClick={onPlaceOrder}
+        onClick={onSubmit}
       />
     );
   }
@@ -62,13 +61,12 @@ const FooterButton: FC<{
         </div>
       }
       className="h-[37px] rounded-[40px] border-[1.5px] border-primary5 bg-white"
-      onClick={onPlaceOrder}
+      onClick={onSubmit}
     />
   );
 };
 
 type Props = {
-  onDraft?: () => void;
-  onPlaceOrder?: () => void;
+  onSubmit?: () => void;
   type: keyof typeof orderTypes;
 };

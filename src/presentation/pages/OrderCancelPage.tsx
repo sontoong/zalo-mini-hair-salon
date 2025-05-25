@@ -13,7 +13,7 @@ const OrderCancelPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Page className="relative flex flex-1 flex-col bg-[#fafbfd]">
+    <Page className="relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (
@@ -27,7 +27,7 @@ const OrderCancelPage = () => {
             </div>
           ) as unknown as string
         }
-        className="topbar no-border h-auto !bg-[#fafbfd] !pl-[16px]"
+        className="topbar no-border h-auto !bg-surface !pl-[16px]"
         showBackIcon={false}
       />
       <div className="flex-1 overflow-auto">

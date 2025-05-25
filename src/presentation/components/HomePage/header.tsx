@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../common/button";
-import SearchIcon from "../../static/search-normal.png";
+import SearchIcon from "../../static/search-icon-blue.png";
 import ChevronLeftIcon from "../../static/chevron-left.png";
 import { Select } from "../common/select";
 import { Input } from "antd";

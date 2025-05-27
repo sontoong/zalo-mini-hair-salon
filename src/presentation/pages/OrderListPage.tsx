@@ -13,7 +13,7 @@ const OrderListPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Page className="relative flex flex-1 flex-col bg-surface">
+    <Page className="page-content relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (
@@ -29,7 +29,7 @@ const OrderListPage = () => {
             </div>
           ) as unknown as string
         }
-        className="topbar h-auto flex-none !bg-surface !pt-[80px] pl-4"
+        className="topbar h-auto flex-none !bg-surface pl-4"
         backIcon={
           <div className="absolute inset-1/2 flex size-[40px] -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full bg-surface">
             <img src={ArrowLeftIcon} />

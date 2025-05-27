@@ -213,7 +213,7 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
             </div>
           )}
           getPopupContainer={(trigger) => trigger.parentNode}
-          dropdownRender={(menus) => (
+          popupRender={(menus) => (
             <div ref={dropdownRef} className="px-1 pb-[12px]">
               <div className="mb-[20px] flex flex-col gap-[8px] pl-3">
                 <div className="text-[15px] font-medium text-gray8">Gợi ý</div>
@@ -222,13 +222,17 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
               {menus}
             </div>
           )}
-          dropdownStyle={{
-            width: "100vw",
-            left: 0,
-            top: "100%",
-            borderRadius: 0,
-            padding: "12px 0 0 0",
-            boxShadow: "none",
+          styles={{
+            popup: {
+              root: {
+                width: "100vw",
+                left: 0,
+                top: "100%",
+                borderRadius: 0,
+                padding: "12px 0 0 0",
+                boxShadow: "none",
+              },
+            },
           }}
           filterOption={(inputValue, option) => {
             if (typeof option?.value === "string") {
@@ -245,7 +249,7 @@ export const SearchBar = forwardRef<SearchBarRef, SearchBarProps>(
           }}
           className="customSelect flex size-full justify-center"
           options={options}
-          onDropdownVisibleChange={(visible) => {
+          onOpenChange={(visible) => {
             if (!visible && isDropdownVisible) {
               lastHeightRef.current = 0;
               setDropdownHeight(0);

@@ -6,12 +6,12 @@ import { UserPageOptionMenu } from "../components/UserPage";
 
 const UserPage = () => {
   return (
-    <Page className="relative flex flex-1 flex-col bg-surface">
+    <Page className="page-content relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (
             <div className="relative">
-              <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
+              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
                 Cá nhân
               </div>
             </div>

@@ -225,7 +225,7 @@ const CartPopup: FC<Props> = ({ children }) => {
               </div>
               <Divider className="m-0" />
               {/* Buttons */}
-              <div className="flex gap-[12px] px-[16px] pb-[20px] pt-[12px]">
+              <div className="flex gap-[12px] px-[16px] pb-[40px] pt-[12px]">
                 <Button
                   text={
                     <div className="flex items-center justify-between">
@@ -265,7 +265,7 @@ const CartOpenButton = () => {
     <CartPopup>
       {({ open }) => (
         <div
-          className="fixed inset-x-[16px] bottom-[85px] z-[999] flex items-center justify-between rounded-[12px] bg-white p-[12px]"
+          className="fixed inset-x-[16px] bottom-[105px] z-[999] flex items-center justify-between rounded-[12px] bg-white p-[12px]"
           onClick={open}
           style={{ boxShadow: "0px 4px 18px 0px #5655552B" }}
         >

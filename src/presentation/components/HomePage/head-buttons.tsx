@@ -2,8 +2,11 @@ import React from "react";
 import StarIcon from "../../static/ic_round-star.png";
 import ChevronRightIcon from "../../static/chevron-right.png";
 import MessageIcon from "../../static/messages-3.png";
+import { useNavigate } from "react-router-dom";
 
 const HeadButtons = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex items-center gap-[12px] rounded-t-[20px] bg-white px-[16px] pb-[12px] pt-[20px]">
       {/* Ratings */}
@@ -13,6 +16,7 @@ const HeadButtons = () => {
           boxShadow:
             "0px 0px 0.84px 0px rgba(48, 73, 116, 0.2), 0px 0.84px 4px -1px rgba(46, 79, 136, 0.12)",
         }}
+        onClick={() => navigate("/ratings")}
       >
         <div className="flex items-center gap-[8px]">
           <div className="flex items-center gap-[4px]">

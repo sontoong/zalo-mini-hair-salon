@@ -6,12 +6,18 @@ import LocationIconBlue from "../../static/location-icon-blue.png";
 import OAIconBlue from "../../static/OA-icon-blue.png";
 import ExportIconBlue from "../../static/export-icon-blue.png";
 import { Switch } from "../common/switch";
+import { useNavigate } from "react-router-dom";
 
 const OptionMenu = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col">
       {/* Account info */}
-      <div className="flex items-center justify-between border-b border-stroke1 p-[16px]">
+      <div
+        className="border-stroke1a flex items-center justify-between border-b p-[16px]"
+        onClick={() => navigate("/profile/account")}
+      >
         <div className="flex items-center gap-[12px]">
           <div className="size-[24px]">
             <img src={UserIconBlue} alt="" className="size-full object-cover" />
@@ -23,7 +29,10 @@ const OptionMenu = () => {
         </div>
       </div>
       {/* Order history */}
-      <div className="flex items-center justify-between border-b border-stroke1 p-[16px]">
+      <div
+        className="border-stroke1a flex items-center justify-between border-b p-[16px]"
+        onClick={() => navigate("/order-history")}
+      >
         <div className="flex items-center gap-[12px]">
           <div className="size-[24px]">
             <img
@@ -39,7 +48,10 @@ const OptionMenu = () => {
         </div>
       </div>
       {/* Location */}
-      <div className="flex items-center justify-between border-b border-stroke1 p-[16px]">
+      <div
+        className="border-stroke1a flex items-center justify-between border-b p-[16px]"
+        onClick={() => navigate("/store-location")}
+      >
         <div className="flex items-center gap-[12px]">
           <div className="size-[24px]">
             <img
@@ -55,7 +67,7 @@ const OptionMenu = () => {
         </div>
       </div>
       {/* Follow OA */}
-      <div className="flex items-center justify-between border-b border-stroke1 p-[16px]">
+      <div className="border-stroke1a flex items-center justify-between border-b p-[16px]">
         <div className="flex items-center gap-[12px]">
           <div className="size-[24px]">
             <img src={OAIconBlue} alt="" className="size-full object-cover" />

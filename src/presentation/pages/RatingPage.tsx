@@ -5,12 +5,12 @@ import { RatingPageRatingContainer } from "../components/RatingPage";
 
 const RatingPage = () => {
   return (
-    <Page className="relative flex flex-1 flex-col bg-white">
+    <Page className="page-content relative flex flex-1 flex-col bg-white">
       <Header
         title={
           (
             <div className="relative">
-              <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
+              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
                 Đánh giá
               </div>
             </div>

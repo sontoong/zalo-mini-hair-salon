@@ -22,7 +22,7 @@ export const Footer: FC<Props> = ({ onSubmit, type }) => {
       </div>
       <Divider className="m-0" />
       {/* Buttons */}
-      <div className="flex px-[16px] pb-[20px] pt-[12px]">
+      <div className="flex px-[16px] pb-[40px] pt-[12px]">
         <FooterButton type={type} onSubmit={onSubmit} />
       </div>
     </div>

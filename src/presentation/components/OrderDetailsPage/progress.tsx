@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { orderTypes } from "../../constants/orderTypes";
-import { Divider, Rate } from "antd";
+import { Divider } from "antd";
 import ClockIcon from "../../static/clock.png";
 import OrderWaiting from "../../static/order-waiting.png";
 import OrderConfirming from "../../static/order-confirming.png";
@@ -8,6 +8,7 @@ import OrderComplete from "../../static/order-complete.png";
 import OrderCancel from "../../static/order-cancel.png";
 import ChevronDown from "../../static/chevron-down.png";
 import NoteText from "../../static/note-text.png";
+import Rate from "../common/rate";
 
 export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
   if (type === "Đơn nháp") {
@@ -39,7 +40,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             <img src={OrderWaiting} alt="" className="size-full object-cover" />
           </div>
         </div>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
       </>
     );
   }
@@ -73,7 +74,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             />
           </div>
         </div>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
       </>
     );
   }
@@ -132,7 +133,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             <img src={ChevronDown} alt="" className="size-full object-cover" />
           </div>
         </div>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
       </>
     );
   }
@@ -163,7 +164,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
           </div>
         </div>
         <div className="flex gap-[8px] px-[16px]">
-          <div className="text-neutral8 text-sm font-medium">Lý do hủy:</div>
+          <div className="text-sm font-medium text-neutral8">Lý do hủy:</div>
           <div className="h-[18px] rounded-[12px] border border-stroke3 px-[8px] text-xs font-normal text-gray8">
             Đổi lịch
           </div>
@@ -182,7 +183,7 @@ export const Progress: FC<{ type: keyof typeof orderTypes }> = ({ type }) => {
             <img src={ChevronDown} alt="" className="size-full object-cover" />
           </div>
         </div>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
       </>
     );
   }

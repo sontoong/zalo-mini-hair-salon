@@ -6,7 +6,7 @@ import LocationPinIcon from "../../static/location-pin-icon.png";
 import MapLocateIcon from "../../static/map-locate-icon.png";
 import { Button } from "./button";
 
-export const Map: FC<{ lat: number; long: number }> = ({ lat, long }) => {
+export const Map: FC<Props> = ({ lat, long, centerButton = true }) => {
   const position = [lat, long] as LatLngTuple;
 
   return (
@@ -36,7 +36,7 @@ export const Map: FC<{ lat: number; long: number }> = ({ lat, long }) => {
           lat: {position[0]}, long: {position[1]}
         </Popup>
       </Marker>
-      <RecenterButton position={position} />
+      {centerButton ? <RecenterButton position={position} /> : null}
     </MapContainer>
   );
 };
@@ -57,3 +57,5 @@ const RecenterButton = ({ position }: { position: LatLngTuple }) => {
     />
   );
 };
+
+type Props = { lat: number; long: number; centerButton?: boolean };

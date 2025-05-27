@@ -23,6 +23,9 @@ import OrderListPage from "./presentation/pages/OrderListPage";
 import OrderDetailsPage from "./presentation/pages/OrderDetailsPage";
 import RatingPage from "./presentation/pages/RatingPage";
 import OrderHistoryPage from "./presentation/pages/OrderHistoryPage";
+import AccountInformationPage from "./presentation/pages/AccountInformationPage";
+import StoreLocationPage from "./presentation/pages/StoreLocationPage";
+import RatingsPage from "./presentation/pages/RatingsPage";
 
 import "dayjs/locale/vi";
 import timezone from "dayjs/plugin/timezone";
@@ -89,8 +92,20 @@ const router = createBrowserRouter(
           element: <RatingPage />,
         },
         {
+          path: "/ratings",
+          element: <RatingsPage />,
+        },
+        {
           path: "/order-history",
           element: <OrderHistoryPage />,
+        },
+        {
+          path: "/profile/account",
+          element: <AccountInformationPage />,
+        },
+        {
+          path: "/store-location",
+          element: <StoreLocationPage />,
         },
       ],
     },

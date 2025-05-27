@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import ServiceImg1 from "../../static/service-1.jpg";
 import ServiceImg2 from "../../static/service-2.jpg";
 import { formatCurrency } from "../../utils/helpers";
-import OrderPopup from "./order-popup";
+import { ServicePopup } from "./service-popup";
 
 const ServiceList = () => {
   return (
@@ -10,9 +10,9 @@ const ServiceList = () => {
       <div className="text-2xl font-medium">Dịch vụ tiêu biểu</div>
       <div className="grid grid-cols-2 gap-x-[24px] gap-y-[12px]">
         {services.map((item, index) => (
-          <OrderPopup key={index}>
+          <ServicePopup key={index}>
             {({ open }) => <ServiceItem service={item} onClick={open} />}
-          </OrderPopup>
+          </ServicePopup>
         ))}
       </div>
     </div>

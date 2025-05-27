@@ -2,6 +2,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+// Styles
+import "./presentation/styles/app.scss";
+
 // Custom zaui
 import "./presentation/styles/zaui.scss";
 

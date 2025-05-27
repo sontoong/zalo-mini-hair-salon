@@ -2,7 +2,7 @@ import { Divider } from "antd";
 import React, { FC } from "react";
 import { formatCurrency } from "../../utils/helpers";
 import NoteTextIcon from "../../static/note-text.png";
-import EditIcon from "../../static/edit-2.png";
+import EditIcon from "../../static/edit-icon.png";
 
 export const Summary = () => {
   return (

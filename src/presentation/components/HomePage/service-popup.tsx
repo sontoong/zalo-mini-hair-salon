@@ -12,7 +12,7 @@ import AddIcon from "../../static/add-icon.png";
 import { Radio } from "../common/radio";
 import { useNavigate } from "react-router-dom";
 
-const OrderPopup: FC<Props> = ({ children }) => {
+const ServicePopup: FC<Props> = ({ children }) => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [visible, setVisible] = useState<boolean>(false);
@@ -219,7 +219,7 @@ const OrderPopup: FC<Props> = ({ children }) => {
               </div>
               <Divider className="m-0" />
               {/* Buttons */}
-              <div className="flex gap-[12px] px-[16px] pb-[20px] pt-[12px]">
+              <div className="flex gap-[12px] px-[16px] pb-[40px] pt-[12px]">
                 <Button
                   text={
                     <div className="text-[15px] font-medium text-primary5">
@@ -248,7 +248,7 @@ const OrderPopup: FC<Props> = ({ children }) => {
   );
 };
 
-export default OrderPopup;
+export { ServicePopup };
 
 type Props = {
   children: (methods: { open: () => void }) => React.ReactNode;

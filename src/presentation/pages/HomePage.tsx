@@ -11,7 +11,7 @@ import Promotion from "../components/HomePage/promotion";
 
 const HomePage: FC = () => {
   return (
-    <Page className="relative flex flex-1 flex-col bg-[#fafbff]">
+    <Page className="page-content relative flex flex-1 flex-col bg-[#fafbff]">
       <HomePageHeader />
       <div className="homepage-scroll-container flex-1 overflow-auto bg-white">
         <div className="relative h-[240px] w-full">
@@ -24,7 +24,7 @@ const HomePage: FC = () => {
           />
           <Promotion />
         </div>
-        <div className="relative flex flex-col gap-[8px] pb-[100px] pt-[35px]">
+        <div className="relative flex flex-col gap-[8px] pb-[100px]">
           <div className="absolute inset-x-0 top-0 z-20 -translate-y-1/2">
             <HomePageHeadButtons />
           </div>

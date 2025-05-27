@@ -9,7 +9,7 @@
     "statusBar": "transparent",
     "selfControlLoading": false,
     "hideAndroidBottomNavigationBar": false,
-    "hideIOSSafeAreaBottom": false,
+    "hideIOSSafeAreaBottom": true,
     "actionBarHidden": true
   },
   "debug": false,

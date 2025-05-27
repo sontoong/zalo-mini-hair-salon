@@ -21,7 +21,7 @@ export const Footer: FC<Props> = ({ onDraft, onPlaceOrder }) => {
       </div>
       <Divider className="m-0" />
       {/* Buttons */}
-      <div className="flex gap-[12px] px-[16px] pb-[20px] pt-[12px]">
+      <div className="flex gap-[12px] px-[16px] pb-[40px] pt-[12px]">
         <Button
           text={
             <div className="text-[15px] font-medium text-primary5">

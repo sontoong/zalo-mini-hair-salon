@@ -13,7 +13,7 @@ const OrderSuccessPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Page className="relative flex flex-1 flex-col bg-surface">
+    <Page className="page-content relative flex flex-1 flex-col bg-surface">
       <Header
         title={
           (

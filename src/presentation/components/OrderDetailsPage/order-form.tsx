@@ -19,6 +19,7 @@ const OrderForm: FC<Props> = ({ order }) => {
   function onFormFinish() {
     switch (type) {
       case "Đơn nháp":
+        navigate("/order-success");
         break;
 
       case "Chờ thực hiện":
@@ -48,17 +49,16 @@ const OrderForm: FC<Props> = ({ order }) => {
 
   return (
     <Form form={form} initialValues={initialValues} onFinish={onFormFinish}>
-      <div className="flex flex-col gap-[20px] pb-[150px]">
-        <Divider className="m-0 border-[2px] border-stroke1" />
+      <div className="flex flex-col gap-[20px] pb-[150px] pt-[12px]">
         <div className="flex flex-col gap-[12px]">
           <Progress type={type} />
           <Form.Item name="time" noStyle>
             <TimePicker />
           </Form.Item>
         </div>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
         <Summary />
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
         <PaymentMethod />
         <Footer type={type} onSubmit={form.submit} />
       </div>

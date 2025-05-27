@@ -21,9 +21,9 @@ const OrderForm = () => {
         <Form.Item name="time" noStyle>
           <TimePicker />
         </Form.Item>
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
         <Summary />
-        <Divider className="m-0 border-[2px] border-stroke1" />
+        <Divider className="border-stroke1a m-0 border-[2px]" />
         <PaymentMethod />
         <Footer onDraft={() => {}} onPlaceOrder={form.submit} />
       </div>

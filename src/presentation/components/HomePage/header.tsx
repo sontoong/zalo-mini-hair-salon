@@ -45,7 +45,7 @@ const Header = () => {
           </div>
         ) as unknown as string
       }
-      className="topbar no-border !fixed !z-30 h-auto flex-none border-stroke1 !py-0 pl-4"
+      className="topbar no-border !fixed !z-30 h-auto flex-none !pb-0 pl-4"
       showBackIcon={false}
       style={{ boxShadow: "0px 2px 12px 0px #0000000F", opacity: opacity }}
     />
@@ -90,7 +90,7 @@ const SearchSection = () => {
             <div className="text-xs font-normal text-gray8">Tìm</div>
           </div>
         }
-        className="flex-none rounded-[20px] border border-stroke1 px-[12px] py-[6px]"
+        className="border-stroke1a flex-none rounded-[20px] border px-[12px] py-[6px]"
         style={{ boxShadow: "0px 0.78px 4.67px 0px #0C59730F" }}
         onClick={() => setTextSearch(true)}
       />

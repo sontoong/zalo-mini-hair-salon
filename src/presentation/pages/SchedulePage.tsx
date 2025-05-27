@@ -8,12 +8,12 @@ import {
 
 const SchedulePage = () => {
   return (
-    <Page className="relative flex flex-1 flex-col bg-white">
+    <Page className="page-content relative flex flex-1 flex-col bg-white">
       <Header
         title={
           (
             <div className="relative">
-              <div className="absolute left-[40%] top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium">
+              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
                 Đặt lịch
               </div>
             </div>
@@ -27,7 +27,7 @@ const SchedulePage = () => {
         }
       />
       <div className="flex-1 overflow-auto">
-        <div className="flex flex-col gap-[24px] px-[16px] pb-[16px]">
+        <div className="flex flex-col gap-[24px] px-[16px] pb-[120px]">
           <SchedulePageSuccessModal>
             {({ open }) => <SchedulePageScheduleForm openSuccessModal={open} />}
           </SchedulePageSuccessModal>

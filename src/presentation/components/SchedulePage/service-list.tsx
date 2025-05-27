@@ -28,7 +28,7 @@ const ServiceList: FC<Props> = ({ form }) => {
         </Form.Item>
         <Form.Item name="other-service" noStyle>
           <Input
-            className="h-[41px] rounded-[8px] border-stroke3 px-[20px] text-[15px] font-normal text-gray5"
+            className="h-[41px] rounded-[8px] border-stroke3 px-[20px] text-[15px] font-normal"
             placeholder="Nhập dịch vụ khác"
           />
         </Form.Item>

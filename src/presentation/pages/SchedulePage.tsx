@@ -12,10 +12,8 @@ const SchedulePage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                Đặt lịch
-              </div>
+            <div className="flex w-[calc(100%-32px)] justify-center">
+              Đặt lịch
             </div>
           ) as unknown as string
         }

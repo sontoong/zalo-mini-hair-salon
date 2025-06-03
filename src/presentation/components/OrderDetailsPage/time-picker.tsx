@@ -2,7 +2,7 @@ import { DatePicker, Divider } from "antd";
 import React, { FC } from "react";
 import ArrowRightIcon from "../../static/chevron-right-blue.png";
 import CalendarEditIcon from "../../static/calendar-edit.png";
-import ClockIcon from "../../static/clock.png";
+import ClockIcon from "../../static/clock-blue.png";
 import dayjs from "dayjs";
 
 const TimePicker: FC<Props> = (props) => {
@@ -12,6 +12,7 @@ const TimePicker: FC<Props> = (props) => {
       <DatePicker
         showTime
         showHour
+        showMinute
         suffixIcon={null}
         className="border-none p-0"
         allowClear={false}

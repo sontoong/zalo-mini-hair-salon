@@ -14,12 +14,10 @@ const OrderDetailsPage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                {order.type.label === orderTypes["Đơn nháp"].label
-                  ? order.type.label
-                  : `Đơn hàng #${order.id}`}
-              </div>
+            <div className="flex w-[calc(100%-33px)] justify-center">
+              {order.type.label === orderTypes["Đơn nháp"].label
+                ? order.type.label
+                : `Đơn hàng #${order.id}`}
             </div>
           ) as unknown as string
         }

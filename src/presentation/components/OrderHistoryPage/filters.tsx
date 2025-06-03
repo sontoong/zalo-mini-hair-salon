@@ -33,6 +33,7 @@ const Filters: FC<Props> = ({ enableSearch }) => {
         prefix={<img src={RangePickerIcon} className="size-[18px]" />}
         suffixIcon={null}
         allowClear={false}
+        separator={<div className="-translate-x-[15px] text-neutral7">-</div>}
       />
     </div>
   );

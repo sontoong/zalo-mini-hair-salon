@@ -9,14 +9,12 @@ const OrderPage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                Đặt đơn
-              </div>
+            <div className="flex w-[calc(100%-32px)] justify-center">
+              Đặt đơn
             </div>
           ) as unknown as string
         }
-        className="topbar no-border border-stroke1a h-auto flex-none border-b-[4px] pl-4"
+        className="topbar no-border h-auto flex-none border-b-[4px] border-stroke1a pl-4"
         backIcon={
           <div className="absolute inset-1/2 flex size-[40px] -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full bg-surface">
             <img src={ArrowLeftIcon} />

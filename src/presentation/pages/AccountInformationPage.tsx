@@ -9,10 +9,8 @@ const AccountInformationPage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                Thông tin tài khoản
-              </div>
+            <div className="flex w-[calc(100%-33px)] justify-center">
+              Thông tin tài khoản
             </div>
           ) as unknown as string
         }

@@ -10,10 +10,8 @@ const UserPage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                Cá nhân
-              </div>
+            <div className="flex w-[calc(100%-32px)] justify-center">
+              Cá nhân
             </div>
           ) as unknown as string
         }

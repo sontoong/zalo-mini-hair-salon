@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { Calendar, Button, DatePicker, Divider } from "antd";
+import React, { useState, useRef, useCallback } from "react";
+import { DatePicker, Divider } from "antd";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Virtual } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import ChevronDown from "../../static/chevron-down-small.png";
@@ -8,8 +11,8 @@ import clsx from "clsx";
 const AppointmentScheduler = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
   const [selectedTime, setSelectedTime] = useState<string>("06:00");
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  // Sample time slots - you can modify these based on your needs
   const timeSlots = [
     "06:00",
     "07:00",
@@ -19,9 +22,22 @@ const AppointmentScheduler = () => {
     "06:30",
   ].concat(Array.from({ length: 19 }).map((_, index) => `06:${30 + index}`));
 
+  const weekdays = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+
+  const getWeekDates = useCallback((offset: number) => {
+    const startOfWeek = dayjs().startOf("week").add(offset, "week");
+    return Array.from({ length: 7 }, (_, i) => startOfWeek.add(i, "day"));
+  }, []);
+
   const onDateChange = (date: Dayjs) => {
     if (date >= dayjs().startOf("day")) {
       setSelectedDate(date);
+
+      const diffInWeeks = date.diff(dayjs().startOf("week"), "week");
+
+      if (swiperRef.current) {
+        swiperRef.current.slideTo(diffInWeeks);
+      }
     }
   };
 
@@ -29,10 +45,49 @@ const AppointmentScheduler = () => {
     setSelectedTime(time);
   };
 
-  const disabledDate = (current: Dayjs) => {
-    // Disable dates before today
-    return current && current < dayjs().startOf("day");
+  const disabledDate = (date: Dayjs) => {
+    return date.isBefore(dayjs().startOf("day"));
   };
+
+  const renderWeekSlide = (offset: number) => {
+    const dates = getWeekDates(offset);
+    return (
+      <div className="flex w-full justify-between">
+        {dates.map((date, index) => {
+          const isSelected = date.isSame(selectedDate, "day");
+          const isToday = date.isSame(dayjs(), "day");
+
+          return (
+            <button
+              key={index}
+              onClick={() => onDateChange(date)}
+              className={clsx(
+                "flex h-[64px] flex-col items-center gap-[6px] rounded-[24px] px-[10px] py-[8px]",
+                {
+                  "bg-primary4 text-white": isSelected,
+                  "bg-blue1": isToday,
+                },
+              )}
+            >
+              <div className="text-lg font-medium">{date.date()}</div>
+              <div
+                className={clsx("text-xs font-normal text-gray7", {
+                  "!text-white": isSelected,
+                })}
+              >
+                {weekdays[index]}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const virtualSlides = Array.from({ length: 100 }).map((_, index) => {
+    const offset = index;
+    return { offset };
+  });
 
   return (
     <div className="flex flex-col gap-[20px]">
@@ -47,7 +102,8 @@ const AppointmentScheduler = () => {
               variant="borderless"
               format="[Tháng] M[/]YYYY"
               allowClear={false}
-              className="w-[115px] p-0"
+              className="w-[120px] p-0"
+              inputReadOnly
               suffixIcon={
                 <img
                   src={ChevronDown}
@@ -56,7 +112,7 @@ const AppointmentScheduler = () => {
                 />
               }
               value={selectedDate}
-              onChange={(date) => onDateChange(date)}
+              onChange={(date) => date && onDateChange(date)}
             />
             <div
               className="text-[15px] font-medium text-blue5"
@@ -66,37 +122,22 @@ const AppointmentScheduler = () => {
             </div>
           </div>
           <Divider className="m-0" />
-          <div className="flex justify-between">
-            {["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map(
-              (weekday, index) => {
-                const date = selectedDate.startOf("week").add(index, "day");
-                const isSelected = date.isSame(selectedDate, "day");
-                const isToday = date.isSame(dayjs(), "day");
-                return (
-                  <button
-                    key={index}
-                    onClick={() => onDateChange(date)}
-                    className={clsx(
-                      "flex h-[64px] flex-col items-center gap-[6px] rounded-[24px] px-[10px] py-[8px]",
-                      {
-                        "bg-primary4 text-white": isSelected,
-                        "bg-blue1": isToday,
-                      },
-                    )}
-                  >
-                    <div className="text-lg font-medium">{date.date()}</div>
-                    <div
-                      className={clsx("text-xs font-normal text-gray7", {
-                        "!text-white": isSelected,
-                      })}
-                    >
-                      {weekday}
-                    </div>
-                  </button>
-                );
-              },
-            )}
-          </div>
+          <Swiper
+            modules={[Virtual]}
+            spaceBetween={0}
+            slidesPerView={1}
+            virtual
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            className="size-full"
+          >
+            {virtualSlides.map((slide, index) => (
+              <SwiperSlide key={index} virtualIndex={index}>
+                {renderWeekSlide(slide.offset)}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       {/* Time Slots */}

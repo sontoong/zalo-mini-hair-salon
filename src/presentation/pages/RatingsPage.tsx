@@ -13,10 +13,8 @@ const RatingsPage = () => {
       <Header
         title={
           (
-            <div className="relative">
-              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 text-lg font-medium">
-                Đánh giá
-              </div>
+            <div className="flex w-[calc(100%-32px)] justify-center">
+              Đánh giá
             </div>
           ) as unknown as string
         }

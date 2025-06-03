@@ -12,6 +12,7 @@ const TimePicker: FC<Props> = (props) => {
       <DatePicker
         showTime
         showHour
+        showMinute
         suffixIcon={null}
         className="border-none p-0"
         allowClear={false}

@@ -17,14 +17,12 @@ const OrderSuccessPage = () => {
       <Header
         title={
           (
-            <div className=" ">
-              <Button.Icon
-                className="flex size-[40px] items-center justify-center rounded-full bg-white"
-                style={{ boxShadow: "0px -2px 12px 0px #0000000F" }}
-                icon={<img src={HomeIcon} />}
-                onClick={() => navigate("/")}
-              />
-            </div>
+            <Button.Icon
+              className="flex size-[40px] items-center justify-center rounded-full bg-white"
+              style={{ boxShadow: "0px -2px 12px 0px #0000000F" }}
+              icon={<img src={HomeIcon} />}
+              onClick={() => navigate("/")}
+            />
           ) as unknown as string
         }
         className="topbar no-border h-auto !bg-surface !pl-[16px]"

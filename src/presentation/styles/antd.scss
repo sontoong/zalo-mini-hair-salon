@@ -85,6 +85,7 @@
 
 // Date picker
 @media (max-width: 648px) {
+  // Range picker
   .ant-picker-panels {
     position: relative;
     > *:last-child {
@@ -112,6 +113,19 @@
         position: absolute;
         right: 0;
         height: 40px;
+      }
+    }
+  }
+
+  // Date-time picker
+  .ant-picker-datetime-panel {
+    flex-direction: column;
+    .ant-picker-time-panel {
+      .ant-picker-time-panel-column .ant-picker-time-panel-cell-inner {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        padding: 0 !important;
       }
     }
   }
